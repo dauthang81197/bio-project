@@ -1,0 +1,26 @@
+[
+  {
+    "Pass": "structure",
+    "Original Text": "PRD Scope Boundaries after detailed requirements",
+    "Revised Text": "MOVE after Confirmed Decisions",
+    "Changes": "Applied; no words removed."
+  },
+  {
+    "Pass": "structure",
+    "Original Text": "Addendum current delivery decision after historical research",
+    "Revised Text": "MOVE current decision before research",
+    "Changes": "Applied; no words removed."
+  },
+  {
+    "Pass": "structure",
+    "Original Text": "PRD Assumptions Index",
+    "Revised Text": "PRESERVE",
+    "Changes": "Retains distinction between confirmed facts and proposed defaults."
+  },
+  {
+    "Pass": "prose",
+    "Original Text": "A paid Order without provider-accepted fulfillment",
+    "Revised Text": "A paid Order whose Delivery email has not been accepted by the email provider",
+    "Changes": "Applied in NFR-7; makes provider acceptance precise."
+  }
+]
