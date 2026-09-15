@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { PersonalInfoContent } from '@/components/personal-info-content';
+import { PUBLISHED_PERSONAL_INFO } from '@/lib/personal-info';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
@@ -8,8 +10,7 @@ export const metadata: Metadata = {
 export default function InfoPage() {
   return (
     <div className="mx-auto max-w-reading px-gutter-mobile py-12 md:px-gutter-desktop">
-      <h1 className="text-heading">Info</h1>
-      <p className="mt-4 text-muted-ink">Content coming soon.</p>
+      <PersonalInfoContent info={PUBLISHED_PERSONAL_INFO} />
     </div>
   );
 }

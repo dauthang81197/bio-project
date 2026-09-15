@@ -9,7 +9,7 @@ const baseURL = `http://127.0.0.1:${PORT}`;
  * and reuses the server across the whole run.
  */
 export default defineConfig({
-  testDir: './tests/e2e',
+  testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
