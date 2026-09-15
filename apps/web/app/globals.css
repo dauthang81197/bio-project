@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+/*
+ * DESIGN.md tokens, encoded as Tailwind v4 theme values. Components must
+ * reference these (bg-canvas, text-ink, rounded-card, ...) and never
+ * hardcode hex values.
+ */
+@theme {
+  /* Colors */
+  --color-canvas: #f7f5ef;
+  --color-surface: #ffffff;
+  --color-ink: #18212b;
+  --color-muted-ink: #5b6673;
+  --color-action-blue: #155eef;
+  --color-success: #067647;
+  --color-warning: #b54708;
+  --color-danger: #b42318;
+  --color-hairline: #d8dee6;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --text-heading: clamp(1.75rem, 4vw, 3.5rem);
+  --text-heading--line-height: 1.15;
+  --text-heading--font-weight: 700;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  /* 8px spacing unit; utilities like p-1 / gap-2 derive from this. */
+  --spacing: 0.5rem;
+  --spacing-gutter-mobile: 20px;
+  --spacing-gutter-desktop: 32px;
+
+  /* Shape */
+  --radius-button: 6px;
+  --radius-card: 8px;
+  --radius-badge: 9999px;
+
+  /* Layout */
+  --container-reading: 1120px;
+
+  /* Custom breakpoint: full inline nav vs. mobile disclosure menu. */
+  --breakpoint-desktop: 1200px;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--text-body--font-weight);
+    line-height: var(--text-body--line-height);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--text-heading--font-weight);
+    line-height: var(--text-heading--line-height);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* Visible focus indicators everywhere; never suppressed for polish. */
+  :focus-visible {
+    outline: 2px solid var(--color-action-blue);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
