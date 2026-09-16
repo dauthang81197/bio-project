@@ -29,15 +29,15 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 # - Retrospective appends its action items to action_items; the status view surfaces open ones
 generated: 09-15-2026 12:30
-last_updated: 09-15-2026 12:35
+last_updated: 09-15-2026 19:05
 project: book-ai-project
 project_key: NOKEY
 tracking_system: file-system
 story_location: E:/Project/book-ai-project/_bmad-output/implementation-artifacts
 development_status:
-  epic-1: backlog
-  1-1-establish-the-public-site-shell: backlog
-  1-2-publish-the-personal-information-page: backlog
+  epic-1: in-progress
+  1-1-establish-the-public-site-shell: review
+  1-2-publish-the-personal-information-page: review
   1-3-read-published-blog-posts: backlog
   1-4-browse-tiktok-affiliate-links: backlog
   1-5-apply-public-accessibility-and-responsive-states: backlog
