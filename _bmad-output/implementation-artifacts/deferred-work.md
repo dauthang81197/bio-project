@@ -17,3 +17,7 @@
 - source_spec: `_bmad-output/implementation-artifacts/spec-1-2-publish-the-personal-information-page.md`
   summary: `SocialLink.href` is not runtime-validated against its "absolute URL" type comment, so a malformed or unsafe scheme (e.g. `javascript:`) would render as a normal external, `target="_blank"` link.
   evidence: `apps/web/components/personal-info-content.tsx` renders `link.href` directly with no scheme/format check. Not currently exploitable -- the only two call sites (`PUBLISHED_PERSONAL_INFO`, `PLACEHOLDER_PERSONAL_INFO`) are developer-edited static TypeScript literals, not admin- or user-submitted input; that input path doesn't exist until Epic 4's admin-editing stories. Worth adding an `https://` scheme guard (or equivalent) once a real, less-trusted content source is wired in.
+
+- source_spec: `_bmad-output/implementation-artifacts/spec-1-3-read-published-blog-posts.md`
+  summary: Remove or explicitly exclude the root `package-lock.json` so pnpm remains the repository's single dependency-lock authority.
+  evidence: `package-lock.json` was already untracked before Story 1.3 and the user explicitly asked that it remain untouched. If it is later committed beside `pnpm-lock.yaml`, npm and pnpm can resolve different dependency graphs.
