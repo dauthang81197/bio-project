@@ -233,10 +233,10 @@ test.describe('Matrix row 5 -- Keyboard traversal follows reading order', () => 
   });
 });
 
-test.describe('Stub routes render without error', () => {
-  for (const [path, heading] of [
-    ['/blog', 'Blog'],
-    ['/tiktok', 'TikTok'],
+test.describe('Public routes render without error', () => {
+  for (const [path, heading, content] of [
+    ['/blog', 'Blog', 'No posts have been published yet.'],
+    ['/tiktok', 'TikTok', 'Content coming soon.'],
   ] as const) {
     test(`${path} renders its stub content`, async ({ page }) => {
       const response = await page.goto(path);
@@ -246,7 +246,7 @@ test.describe('Stub routes render without error', () => {
       await expect(
         page.getByRole('heading', { name: heading, exact: true }),
       ).toBeVisible();
-      await expect(page.getByText('Content coming soon.')).toBeVisible();
+      await expect(page.getByText(content)).toBeVisible();
     });
   }
 });
