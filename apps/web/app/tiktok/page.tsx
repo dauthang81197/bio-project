@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { AffiliateLinksContent } from '@/components/affiliate-links-content';
+import { listActiveAffiliateLinks } from '@/lib/affiliate-links';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
@@ -8,8 +10,7 @@ export const metadata: Metadata = {
 export default function TikTokPage() {
   return (
     <div className="mx-auto max-w-reading px-gutter-mobile py-12 md:px-gutter-desktop">
-      <h1 className="text-heading">TikTok</h1>
-      <p className="mt-4 text-muted-ink">Content coming soon.</p>
+      <AffiliateLinksContent links={listActiveAffiliateLinks()} />
     </div>
   );
 }
