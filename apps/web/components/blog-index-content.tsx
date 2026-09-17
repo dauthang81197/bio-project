@@ -17,20 +17,21 @@ export function BlogIndexContent({ posts }: BlogIndexContentProps) {
     <div data-testid="blog-index">
       <h1 className="text-heading">{copy.heading}</h1>
       {posts.length === 0 ? (
-        <p className="mt-4 max-w-prose text-muted-ink" data-testid="blog-empty">
-          {copy.empty}
-        </p>
+        <div data-testid="blog-empty">
+          <p className="mt-4 max-w-prose text-muted-ink">{copy.empty}</p>
+          <Link href="/" className="mt-4 inline-flex min-h-11 min-w-11 items-center font-bold text-action-blue underline">Go back home</Link>
+        </div>
       ) : (
         <ul className="mt-8 grid gap-4" data-testid="blog-post-list">
           {posts.map((post) => (
-            <li key={post.slug}>
+            <li key={post.slug} className="min-w-0">
               <article className="rounded-card border border-hairline bg-surface p-4 md:p-6">
-                <h2 className="text-xl font-bold">{post.title}</h2>
-                <p className="mt-2 max-w-prose text-muted-ink">{post.excerpt}</p>
+                <h2 className="break-words text-xl font-bold">{post.title}</h2>
+                <p className="mt-2 max-w-prose break-words text-muted-ink">{post.excerpt}</p>
                 <p className="mt-4">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-block min-h-11 py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+                    className="inline-flex min-h-11 min-w-11 max-w-full items-center break-words py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
                   >
                     {copy.readPost}: {post.title}
                   </Link>

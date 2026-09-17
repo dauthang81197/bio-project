@@ -126,8 +126,8 @@ export function MobileMenu({ pathname }: MobileMenuProps) {
                     data-testid={`mobile-nav-link-${item.href}`}
                     className={
                       isCta
-                        ? 'inline-block rounded-button bg-action-blue px-4 py-2 font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:ring-2 aria-[current=page]:ring-ink aria-[current=page]:ring-offset-2'
-                        : 'block py-1 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:font-bold aria-[current=page]:text-action-blue'
+                        ? 'inline-flex min-h-11 min-w-11 items-center rounded-button bg-action-blue px-4 py-2 font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:ring-2 aria-[current=page]:ring-ink aria-[current=page]:ring-offset-2'
+                        : 'flex min-h-11 min-w-11 items-center text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:font-bold aria-[current=page]:text-action-blue'
                     }
                   >
                     {item.label}
