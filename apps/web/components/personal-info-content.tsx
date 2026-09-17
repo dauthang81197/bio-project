@@ -5,6 +5,7 @@
 // producing objects `react-dom/server` can't render. Harmless for the
 // Next.js build, which already defaults to the same source.
 import type { PersonalInfo } from '@/lib/personal-info';
+import Link from 'next/link';
 
 type PersonalInfoContentProps = {
   /** Published personal info, or `null` when nothing has been published. */
@@ -35,15 +36,16 @@ export function PersonalInfoContent({ info }: PersonalInfoContentProps) {
         <p className="mt-4 max-w-prose text-muted-ink">
           This page has not been published yet. Check back soon.
         </p>
+        <Link href="/" className="mt-4 inline-flex min-h-11 min-w-11 items-center font-bold text-action-blue underline">Go back home</Link>
       </div>
     );
   }
 
   return (
     <div data-testid="info-published">
-      <h1 className="text-heading">{info.displayName}</h1>
-      <p className="mt-4 max-w-prose text-body">{info.introduction}</p>
-      <p className="mt-4 max-w-prose text-body">{info.biography}</p>
+      <h1 className="break-words text-heading">{info.displayName}</h1>
+      <p className="mt-4 max-w-prose break-words text-body">{info.introduction}</p>
+      <p className="mt-4 max-w-prose break-words text-body">{info.biography}</p>
 
       {info.socialLinks.length > 0 && (
         <nav aria-label="Social links" data-testid="info-social-links" className="mt-6">
@@ -55,7 +57,7 @@ export function PersonalInfoContent({ info }: PersonalInfoContentProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`info-social-link-${index}`}
-                  className="text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+                  className="inline-flex min-h-11 min-w-11 max-w-full items-center break-words text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
                 >
                   {link.label}
                   <span aria-hidden="true"> ↗</span>

@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import type { PublicAffiliateLink } from '@/lib/affiliate-links';
+import Link from 'next/link';
 
 type AffiliateLinksContentProps = {
   links: readonly PublicAffiliateLink[];
@@ -16,12 +17,10 @@ export function AffiliateLinksContent({ links }: AffiliateLinksContentProps) {
     <div data-testid="affiliate-links-content">
       <h1 className="text-heading">{copy.heading}</h1>
       {links.length === 0 ? (
-        <p
-          className="mt-4 max-w-prose text-muted-ink"
-          data-testid="affiliate-links-empty"
-        >
-          {copy.empty}
-        </p>
+        <div data-testid="affiliate-links-empty">
+          <p className="mt-4 max-w-prose text-muted-ink">{copy.empty}</p>
+          <Link href="/" className="mt-4 inline-flex min-h-11 min-w-11 items-center font-bold text-action-blue underline">Go back home</Link>
+        </div>
       ) : (
         <ul className="mt-8 grid gap-4" data-testid="affiliate-links-list">
           {links.map((link, index) => (
@@ -38,7 +37,7 @@ export function AffiliateLinksContent({ links }: AffiliateLinksContentProps) {
                     href={link.destination}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 min-w-11 max-w-full items-center break-all py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+                    className="inline-flex min-h-11 min-w-11 max-w-full items-center break-words py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
                   >
                     {link.title} <span aria-hidden="true">↗</span>
                     <span className="sr-only"> ({copy.opensInNewTab})</span>

@@ -114,7 +114,7 @@ test('the list renders semantic cards and accessible external actions', () => {
   expect(html).toContain('opens in a new tab');
   expect(html).toContain('min-h-11');
   expect(html).toContain('min-w-11');
-  expect(html).toContain('break-all');
+  expect(html).toContain('break-words');
   expect(html).toContain('focus-visible:outline');
   expect(html).not.toContain('[Private]');
 });

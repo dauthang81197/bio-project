@@ -18,7 +18,7 @@ export default function NotFound() {
         The page you&apos;re looking for doesn&apos;t exist.
       </p>
       <p className="mt-4">
-        <Link href="/" className="font-bold text-action-blue">
+        <Link href="/" className="inline-flex min-h-11 min-w-11 items-center font-bold text-action-blue underline">
           Go back home
         </Link>
       </p>

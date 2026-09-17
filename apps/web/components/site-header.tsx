@@ -20,7 +20,7 @@ export function SiteHeader() {
         <Link
           href="/"
           data-testid="brand-link"
-          className="text-lg font-bold text-ink no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+          className="inline-flex min-h-11 min-w-11 items-center text-lg font-bold text-ink no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
         >
           {siteConfig.brandName}
         </Link>
@@ -39,7 +39,7 @@ export function SiteHeader() {
                     href={item.href}
                     aria-current={current ? 'page' : undefined}
                     data-testid={`desktop-nav-link-${item.href}`}
-                    className="text-ink hover:text-action-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:font-bold aria-[current=page]:text-action-blue"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-ink hover:text-action-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:font-bold aria-[current=page]:text-action-blue"
                   >
                     {item.label}
                   </Link>
@@ -51,7 +51,7 @@ export function SiteHeader() {
             href={siteConfig.booksCta.href}
             aria-current={isNavItemCurrent(pathname, siteConfig.booksCta.href) ? 'page' : undefined}
             data-testid="desktop-books-cta"
-            className="rounded-button bg-action-blue px-4 py-2 font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:ring-2 aria-[current=page]:ring-ink aria-[current=page]:ring-offset-2"
+            className="inline-flex min-h-11 min-w-11 items-center rounded-button bg-action-blue px-4 py-2 font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue aria-[current=page]:ring-2 aria-[current=page]:ring-ink aria-[current=page]:ring-offset-2"
           >
             {siteConfig.booksCta.label}
           </Link>
