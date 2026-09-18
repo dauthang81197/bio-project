@@ -1,10 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 4173;
+const PORT = Number(process.env.PLAYWRIGHT_PORT ?? 4173);
 const baseURL = `http://127.0.0.1:${PORT}`;
 
 /**
- * Runs against a production build (`next build` + `next start`), not dev
+ * Runs against a production build (`next build --webpack` + `next start`), not dev
  * mode, per the story's verification requirement. `webServer` builds once
  * and reuses the server across the whole run.
  */
@@ -25,7 +25,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `next build && next start -p ${PORT}`,
+    command: `next build --webpack && next start -p ${PORT}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,

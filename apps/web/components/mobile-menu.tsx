@@ -92,7 +92,7 @@ export function MobileMenu({ pathname }: MobileMenuProps) {
   }, [isOpen]);
 
   return (
-    <div className="relative desktop:hidden" data-testid="mobile-menu">
+    <div className="relative shrink-0 desktop:hidden" data-testid="mobile-menu">
       <button
         ref={buttonRef}
         type="button"

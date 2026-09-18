@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { BlogIndexContent } from '@/components/blog-index-content';
 import { BlogPostContent } from '@/components/blog-post-content';
 import { PersonalInfoContent } from '@/components/personal-info-content';
+import { AffiliateLinksContent } from '@/components/affiliate-links-content';
 
 for (const [path, text] of [
   ['/info', 'This page has not been published yet.'],
@@ -63,6 +64,7 @@ test('published content and navigation remain usable with long copy', async ({ p
     renderToStaticMarkup(createElement(BlogIndexContent, { posts: [{ slug: 'sample', title: longWord, excerpt: longWord }] })),
     renderToStaticMarkup(createElement(BlogPostContent, { post: { slug: 'sample', title: longWord, excerpt: longWord, body: [longWord] } })),
     renderToStaticMarkup(createElement(PersonalInfoContent, { info: { displayName: longWord, introduction: longWord, biography: longWord, socialLinks: [{ label: longWord, href: 'https://example.com' }] } })),
+    renderToStaticMarkup(createElement(AffiliateLinksContent, { links: [{ title: longWord, description: longWord, destination: 'https://example.com' }] })),
   ];
 
   await page.setViewportSize({ width: 320, height: 800 });
@@ -70,6 +72,11 @@ test('published content and navigation remain usable with long copy', async ({ p
   for (const markup of samples) {
     await page.locator('main').evaluate((el, html) => { el.innerHTML = html; }, markup);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+    const contentLink = page.locator('main a').first();
+    if (await contentLink.count()) {
+      await contentLink.focus();
+      await expect(contentLink).toBeFocused();
+    }
   }
 
   const brand = page.getByTestId('brand-link');
