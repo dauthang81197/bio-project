@@ -26,9 +26,9 @@ export function AffiliateLinksContent({ links }: AffiliateLinksContentProps) {
           {links.map((link, index) => (
             <li key={`${index}:${link.title}:${link.destination}`}>
               <article className="rounded-card border border-hairline bg-surface p-4 md:p-6">
-                <h2 className="break-words text-xl font-bold">{link.title}</h2>
+                <h2 className="wrap-anywhere text-xl font-bold">{link.title}</h2>
                 {link.description ? (
-                  <p className="mt-2 max-w-prose break-words text-muted-ink">
+                  <p className="mt-2 max-w-prose wrap-anywhere text-muted-ink">
                     {link.description}
                   </p>
                 ) : null}
@@ -37,7 +37,7 @@ export function AffiliateLinksContent({ links }: AffiliateLinksContentProps) {
                     href={link.destination}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 min-w-11 max-w-full items-center break-words py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+                    className="inline-flex min-h-11 min-w-11 max-w-full items-center wrap-anywhere py-2 font-bold text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
                   >
                     {link.title} <span aria-hidden="true">↗</span>
                     <span className="sr-only"> ({copy.opensInNewTab})</span>

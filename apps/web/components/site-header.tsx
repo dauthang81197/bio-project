@@ -16,11 +16,11 @@ export function SiteHeader() {
 
   return (
     <header data-testid="site-header" className="border-b border-hairline bg-surface">
-      <div className="mx-auto flex max-w-reading items-center justify-between px-gutter-mobile py-4 md:px-gutter-desktop">
+      <div className="mx-auto flex max-w-reading items-center justify-between gap-2 px-gutter-mobile py-4 md:px-gutter-desktop">
         <Link
           href="/"
           data-testid="brand-link"
-          className="inline-flex min-h-11 min-w-11 items-center text-lg font-bold text-ink no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+          className="inline-flex min-h-11 min-w-0 items-center wrap-anywhere text-lg font-bold text-ink no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
         >
           {siteConfig.brandName}
         </Link>

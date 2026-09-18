@@ -43,9 +43,9 @@ export function PersonalInfoContent({ info }: PersonalInfoContentProps) {
 
   return (
     <div data-testid="info-published">
-      <h1 className="break-words text-heading">{info.displayName}</h1>
-      <p className="mt-4 max-w-prose break-words text-body">{info.introduction}</p>
-      <p className="mt-4 max-w-prose break-words text-body">{info.biography}</p>
+      <h1 className="wrap-anywhere text-heading">{info.displayName}</h1>
+      <p className="mt-4 max-w-prose wrap-anywhere text-body">{info.introduction}</p>
+      <p className="mt-4 max-w-prose wrap-anywhere text-body">{info.biography}</p>
 
       {info.socialLinks.length > 0 && (
         <nav aria-label="Social links" data-testid="info-social-links" className="mt-6">
@@ -57,7 +57,7 @@ export function PersonalInfoContent({ info }: PersonalInfoContentProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`info-social-link-${index}`}
-                  className="inline-flex min-h-11 min-w-11 max-w-full items-center break-words text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
+                  className="inline-flex min-h-11 min-w-11 max-w-full items-center wrap-anywhere text-action-blue underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-blue"
                 >
                   {link.label}
                   <span aria-hidden="true"> ↗</span>

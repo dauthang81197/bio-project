@@ -2,7 +2,7 @@
 title: 'Apply public accessibility and responsive states'
 type: 'feature'
 created: '2026-09-17'
-status: 'in-review'
+status: 'done'
 route: 'dispatch'
 baseline_commit: '64b8668d271c2fb6b7517f9647eba882a450d10d'
 review_loop_iteration: 0
@@ -78,7 +78,21 @@ context:
 | Edge case hunter: claimed 200% text zoom not tested | medium. Same root cause as the first finding; the old CSS zoom assertion did not enlarge the root font size. | patch |
 | Verification gap: route loading boundaries unverified | medium. The original unit test rendered only the shared default loading component, so removing a route `loading.tsx` would evade it. Added unit checks for all four route loading modules; pending navigation still needs browser verification. | bad_spec |
 
-Review remains open: Playwright exits with `spawn EPERM` even when unit tests run without a web server, and `next build` compiles but exits with `spawn EPERM` during its TypeScript stage. Lint and standalone `tsc --noEmit` pass. Browser transition and recovery behavior therefore remains unverified.
+Follow-up review (2026-09-18): Fresh Webpack production build and Playwright run passed 59/59 tests. Lint and standalone `tsc --noEmit` passed. The earlier 54/54 result was from a prior run; the later `spawn EPERM` report described a restricted environment, not the current verification result. Pending navigation and thrown-route recovery remain unverified by browser integration tests; the component and route-module checks still pass.
+
+| Follow-up finding | Verdict and evidence | Route |
+| --- | --- | --- |
+| Browser zoom differs from root font-size enlargement | carried medium. The prior text-size finding already records this distinction; the current test meets the specified 200% text-size check, while browser zoom itself was not simulated. | patch |
+| Pending route loading is not verified during navigation (blind hunter and verification-gap) | carried medium. Route modules render correctly in unit checks; no pending navigation is exercised in Playwright. A controlled pending response is needed to settle integration behavior. | bad_spec |
+| Thrown-route error recovery is only checked as a callback (blind hunter and verification-gap) | carried medium. The error boundary renders and calls reset in unit checks; a real route throw and recovery are not exercised. | bad_spec |
+| Long unbroken blog link text can overflow | medium. Fresh browser run reproduced 2102px page width with long copy at 320px. `wrap-anywhere` and a focus check now pass. | patch |
+| Long unbroken affiliate title can overflow | medium. The affiliate link used the same `break-words` sizing and the browser sample now verifies long title, description, and action text without overflow. | patch |
+| Long unbroken social-link label can overflow | medium. The social link used the same `break-words` sizing; the browser sample now passes with `wrap-anywhere`. | patch |
+| Long-copy test bypasses React and does not prove link usability | medium. Static markup is intentionally inserted to probe layout, and the test now also focuses each available content link. It does not claim to verify Next.js navigation. | patch |
+| Existing `package-lock.json` conflicts with pnpm | carried low. The file predates this story and was explicitly left untouched in the prior story; it remains untracked. | defer |
+| 54/54 passed and later Playwright failure appeared contradictory | low. They describe different runs; the follow-up note above now distinguishes them and records the current 59/59 result. | patch |
+| Brand and mobile menu overflow at 200% text size | medium. Fresh browser run measured 383px document width at a 320px viewport; shrinking and wrapping the brand while retaining menu width fixed it. | patch |
+| Fresh Playwright run reused a stale server on port 4173 | medium. The old server lacked the new empty-state links, producing three false failures; the test config now accepts `PLAYWRIGHT_PORT` and uses Webpack for a fresh build. | patch |
 
 ## Verification
 
